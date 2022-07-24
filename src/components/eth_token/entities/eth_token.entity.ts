@@ -15,6 +15,9 @@ export class EthToken {
     @Column({length: 10})
     symbol: string;
 
+    @Column()
+    decimals: number;
+
     @Column({length: 100})
     logo: string;
 
@@ -29,5 +32,8 @@ export class EthToken {
 
     @Column({length: 5})
     validated: string;
+
+    @Column()
+    created_at: Date;
 
 }

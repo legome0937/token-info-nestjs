@@ -25,6 +25,14 @@ export class EthTokenDbRepository extends Repository<EthToken> implements EthTok
     return this.find();
   }
 
+  findAllTokenAddress(): Promise<EthToken[]> {
+    
+    return this.find({
+      select: ['address'],
+    
+    });
+  }
+
   createToken(payload: CreateEthTokenDto): Promise<EthToken> {
     return this.save(payload);
   }
@@ -32,13 +40,20 @@ export class EthTokenDbRepository extends Repository<EthToken> implements EthTok
   //   // let id = parseInt(id);
   //   return this.save({ ...payload, id });
   // }
-  async updateToken(id: number, user: CreateEthTokenDto): Promise<UpdateResult> {
-    const result = await this.findOne(id);
+  async updateToken(address: string, token: UpdateEthTokenDto): Promise<UpdateResult> {
+    console.log(address)
+    const result = await this.findOne({
+      select:['name', 'symbol','decimals', 'logo', 'logo_hash', 'thumbnail', 'block_number', 'validated','created_at'],
+      where: {
+        address: address,
+      },
+    });
+    
     if (result === undefined) {
       throw new Error('User not found in database');
     }
-    return this.update(id, {
-      ...user,
+    return this.update({address}, {
+      ...token,
     });
   }
   async deleteToken(id: number): Promise<void> {

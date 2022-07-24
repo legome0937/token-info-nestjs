@@ -22,12 +22,19 @@ export class EthTokenService {
     return this.ethTokenRepository.findAllToken();
   }
 
+  async findAllAddress(): Promise<EthToken[]> {
+    const addresses = await this.ethTokenRepository.findAllTokenAddress();
+
+    return addresses;
+  }
+
   findOne(id: number): Promise<EthToken> {
     return this.ethTokenRepository.findToken(id);
   }
 
-  async update(id: number, updateEthTokenDto: UpdateEthTokenDto) {
-    await this.ethTokenRepository.updateToken(id, updateEthTokenDto);
+  async update(address: string, updateEthTokenDto: UpdateEthTokenDto) {
+    
+    await this.ethTokenRepository.updateToken(address, updateEthTokenDto);
   }
 
   async remove(id: number) {

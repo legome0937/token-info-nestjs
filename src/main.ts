@@ -7,6 +7,11 @@ import coreBootstrap from '@app/core/bootstrap';
 import { setupSwagger } from '@app/swagger';
 
 async function bootstrap() {
+  interface IOptions {
+    chain?: string,
+    addresses?: string[];
+  }
+
   const app = await NestFactory.create(AppModule);
   
   const config = app.get(ConfigService);
@@ -24,8 +29,11 @@ async function bootstrap() {
   // config, environment, pipe, guards, intereceptors
   coreBootstrap(app);
 
+  
   await app.listen(PORT, () => {
     console.log(`Listening on ::${PORT}`);
   });
+
+ 
 }
 bootstrap();

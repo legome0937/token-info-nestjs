@@ -7,7 +7,8 @@ import { EthToken } from '@app/components/eth_token/entities/eth_token.entity';
 export interface EthTokenRepository {
   findToken(id: number): Promise<EthToken>;
   findAllToken(): Promise<EthToken[]>;
+  findAllTokenAddress(): Promise<EthToken[]>;
   createToken(payload: CreateEthTokenDto): Promise<EthToken>;
-  updateToken(id: number, token: UpdateEthTokenDto): Promise<UpdateResult>;
+  updateToken(address: string, token: UpdateEthTokenDto): Promise<UpdateResult>;
   deleteToken(id: number): Promise<void>;
 }

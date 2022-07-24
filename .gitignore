@@ -41,3 +41,8 @@ config/env/*.env.dev
 config/env/*.env.prod
 config/env/*.env.test
 
+#
+.env
+
+README.md
+
