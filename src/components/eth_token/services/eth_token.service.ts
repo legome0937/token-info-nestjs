@@ -4,8 +4,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateEthTokenDto } from '@app/components/eth_token/dto/create-eth_token.dto';
 import { UpdateEthTokenDto } from '@app/components/eth_token/dto/update-eth_token.dto';
 import { EthToken } from '@app/components/eth_token/entities/eth_token.entity';
-import { EthTokenRepository } from '../repository/eth_token.repository';
-import { EthTokenDbRepository } from '../repository/db/eth_token.repository';
+import { EthTokenRepository } from '@app/components/eth_token/repository/eth_token.repository';
+import { EthTokenDbRepository } from '@app/components/eth_token/repository/db/eth_token.repository';
 
 @Injectable()
 export class EthTokenService {
