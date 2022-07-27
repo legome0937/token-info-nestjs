@@ -61,7 +61,7 @@ export class EthTokenController {
 
     await Moralis.start({ serverUrl, appId, masterKey });
 
-    for (let i = 3272; i < allAddresses.length + 1; i++) {
+    for (let i = 1; i < allAddresses.length + 1; i++) {
       let addresses = [];
       addresses.push(allAddresses[i - 1].address);
 
@@ -89,6 +89,7 @@ export class EthTokenController {
 
       console.log(tokenMetadata[0].symbol);
     }
+
   }
 
   @Get(':id')
